@@ -39,13 +39,7 @@ describe("About Applying What We Have Learnt", function() {
 
       var productsICanEat = [];
 
-      /* solve using filter() & all() / any() */
-
-      var aux = _(products).filter(function (x) { return x.containsNuts == false });
-      var containsShrooms = function (x) {
-          return x == 'mushrooms';
-      };
-      productsICanEat = _(aux).filter(function (x) {return _.any(x.ingredients, containsShrooms) == false});
+      productsICanEat = _(products).filter(function (x) { return x.containsNuts == false && _.include(x.ingredients, "mushrooms") == false });
 
       expect(productsICanEat.length).toBe(1);
   });
